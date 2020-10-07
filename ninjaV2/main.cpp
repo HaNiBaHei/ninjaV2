@@ -3,14 +3,27 @@
 #include "Animation.h"
 #include "Player.h"
 
+static const float VIEW_HEIGHT = 512.0f;
+// set sprite on the centor //
+void ResizeView(const sf::RenderWindow& window, sf::View& view)
+{
+	float aspectRatio = float(window.getSize().x) / float(window.getSize().y);
+	view.setSize(VIEW_HEIGHT * aspectRatio, VIEW_HEIGHT);
+}
+
 int main()
 {
+	// window screen //
 	sf::RenderWindow window(sf::VideoMode(512, 512), "Bloody Sword", sf::Style::Close | sf::Style::Default);
-	sf::Texture playerTexture;
-	playerTexture.loadFromFile("animation/runrightv2.png");
+	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT));
 	
 
-	Player player(&playerTexture, sf::Vector2u(4, 3), 0.07f, 250.f);
+
+	sf::Texture playerTexture;
+	playerTexture.loadFromFile("animation/move.png");
+	
+
+	Player player(&playerTexture, sf::Vector2u(4, 2), 0.15f, 250.f);
 
 	float deltaTime = 0.0f;
 	sf::Clock clock;
@@ -27,12 +40,17 @@ int main()
 			case sf::Event::Closed:
 				window.close();
 				break;
+			case sf::Event::Resized:
+				ResizeView(window, view);
+				break;
 			}
 		}
 
 		player.Update(deltaTime);
+		view.setCenter(player.GetPosition());
 
 		window.clear(sf::Color(150, 150, 150));
+		window.setView(view);
 		player.Draw(window);
 		window.display();
 	}
