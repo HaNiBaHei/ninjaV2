@@ -10,7 +10,7 @@ int main()
 	playerTexture.loadFromFile("animation/runrightv2.png");
 	
 
-	Player player(&playerTexture, sf::Vector2u(4, 3), 0.2f, 150.f);
+	Player player(&playerTexture, sf::Vector2u(4, 3), 0.07f, 250.f);
 
 	float deltaTime = 0.0f;
 	sf::Clock clock;
