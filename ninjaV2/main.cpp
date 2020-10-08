@@ -3,7 +3,7 @@
 #include "Animation.h"
 #include "Player.h"
 
-static const float VIEW_HEIGHT = 1920.0f;
+static const float VIEW_HEIGHT = 720.0f;
 static const float VIEW_WIDGHT = 1080.0f;
 // set sprite on the centor //
 void ResizeView(const sf::RenderWindow& window, sf::View& view)
@@ -15,7 +15,7 @@ void ResizeView(const sf::RenderWindow& window, sf::View& view)
 int main()
 {
 	// window screen //
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Bloody Sword", sf::Style::Close | sf::Style::Default);
+	sf::RenderWindow window(sf::VideoMode(1080, 720), "Bloody Sword", sf::Style::Close | sf::Style::Default);
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT));
 	
 
