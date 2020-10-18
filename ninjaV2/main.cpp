@@ -6,20 +6,35 @@
 static const float VIEW_HEIGHT = 720.0f;
 static const float VIEW_WIDGHT = 1080.0f;
 // set sprite on the centor //
-void ResizeView(const sf::RenderWindow& window, sf::View& view)
+/*void ResizeView(const sf::RenderWindow& window, sf::View& view)
 {
 	float aspectRatio = float(window.getSize().x) / float(window.getSize().y);
 	view.setSize(VIEW_HEIGHT * aspectRatio, VIEW_HEIGHT);
-}
+}*/
 
 int main()
 {
 	// window screen //
-	sf::RenderWindow window(sf::VideoMode(1080, 720), "Bloody Sword", sf::Style::Close | sf::Style::Default);
-	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT));
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Bloody Sword", sf::Style::Close | sf::Style::Default); // setting window //
+	//sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT)); // view sprite //
+
+
+	sf::RectangleShape tile_1;
+	tile_1.setSize(sf::Vector2f(1980, 300));
+	tile_1.setOutlineColor(sf::Color::Red);
+	tile_1.setPosition(0, 850);
+
+	// background //
+	sf::RectangleShape background;
+	background.setSize(sf::Vector2f(1920.0f, 1080.0f));
+	sf::Texture backgroundTexture;
+	backgroundTexture.loadFromFile("Background/skyforest.png");
+	background.setTexture(&backgroundTexture);
+
+	
 	
 
-
+	// player texture //
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("animation/move.png");
 	
@@ -42,16 +57,18 @@ int main()
 				window.close();
 				break;
 			case sf::Event::Resized:
-				ResizeView(window, view);
+				//ResizeView(window, view);
 				break;
 			}
 		}
 
 		player.Update(deltaTime);
-		view.setCenter(player.GetPosition());
-
-		window.clear(sf::Color(150, 150, 150));
-		window.setView(view);
+		//view.setCenter(player.GetPosition());
+		
+		window.clear();
+		window.draw(background);
+		window.draw(tile_1);
+		//window.setView(view);
 		player.Draw(window);
 		window.display();
 	}
