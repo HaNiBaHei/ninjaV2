@@ -15,20 +15,20 @@ static const float VIEW_WIDGHT = 1080.0f;
 int main()
 {
 	// window screen //
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Bloody Sword", sf::Style::Close | sf::Style::Default); // setting window //
+	sf::RenderWindow window(sf::VideoMode(1080, 720), "Bloody Sword", sf::Style::Close | sf::Style::Default); // setting window //
 	//sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT)); // view sprite //
 
 
-	sf::RectangleShape tile_1;
-	tile_1.setSize(sf::Vector2f(1920, 300));
-	sf::Texture tile_1Texture;
-	tile_1Texture.loadFromFile("Background/dirtforest.png");
-	tile_1.setTexture(&tile_1Texture);
-	tile_1.setPosition(0, 850);
+	sf::RectangleShape tile1;
+	tile1.setSize(sf::Vector2f(1080.0f, 720.0f));
+	sf::Texture tile1Texture;
+	tile1Texture.loadFromFile("Background/dirtforest.png");
+	tile1.setTexture(&tile1Texture);
+	//tile1.setPosition(0, 850);
 
 	// background //
 	sf::RectangleShape background;
-	background.setSize(sf::Vector2f(1920.0f, 780.0f));
+	background.setSize(sf::Vector2f(1080.0f, 720.0f));
 	sf::Texture backgroundTexture;
 	backgroundTexture.loadFromFile("Background/skyforest.png");
 	background.setTexture(&backgroundTexture);
@@ -66,9 +66,10 @@ int main()
 
 		player.Update(deltaTime);
 		//view.setCenter(player.GetPosition());
-		window.draw(background);
-		window.draw(tile_1);
+		
 		window.clear();
+		window.draw(tile1);
+		window.draw(background);
 		
 		//window.setView(view);
 		player.Draw(window);
