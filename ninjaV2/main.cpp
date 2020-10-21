@@ -19,19 +19,19 @@ int main()
 	//sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT)); // view sprite //
 
 
-	sf::RectangleShape tile1;
-	tile1.setSize(sf::Vector2f(1080.0f, 720.0f));
-	sf::Texture tile1Texture;
-	tile1Texture.loadFromFile("Background/dirtforest.png");
-	tile1.setTexture(&tile1Texture);
-	//tile1.setPosition(0, 850);
-
 	// background //
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(1080.0f, 720.0f));
 	sf::Texture backgroundTexture;
 	backgroundTexture.loadFromFile("Background/skyforest.png");
 	background.setTexture(&backgroundTexture);
+	
+	sf::RectangleShape tile1;
+	tile1.setSize(sf::Vector2f(1080.0f, 720.0f));
+	sf::Texture tile1Texture;
+	tile1Texture.loadFromFile("Background/dirtforest.png");
+	tile1.setTexture(&tile1Texture);
+	//tile1.setPosition(0, 540);
 
 	
 	
@@ -68,9 +68,9 @@ int main()
 		//view.setCenter(player.GetPosition());
 		
 		window.clear();
-		window.draw(tile1);
-		window.draw(background);
 		
+		window.draw(background);
+		window.draw(tile1);
 		//window.setView(view);
 		player.Draw(window);
 		window.display();
