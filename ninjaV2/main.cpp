@@ -20,13 +20,15 @@ int main()
 
 
 	sf::RectangleShape tile_1;
-	tile_1.setSize(sf::Vector2f(1980, 300));
-	tile_1.setOutlineColor(sf::Color::Red);
+	tile_1.setSize(sf::Vector2f(1920, 300));
+	sf::Texture tile_1Texture;
+	tile_1Texture.loadFromFile("Background/dirtforest.png");
+	tile_1.setTexture(&tile_1Texture);
 	tile_1.setPosition(0, 850);
 
 	// background //
 	sf::RectangleShape background;
-	background.setSize(sf::Vector2f(1920.0f, 1080.0f));
+	background.setSize(sf::Vector2f(1920.0f, 780.0f));
 	sf::Texture backgroundTexture;
 	backgroundTexture.loadFromFile("Background/skyforest.png");
 	background.setTexture(&backgroundTexture);
@@ -64,10 +66,10 @@ int main()
 
 		player.Update(deltaTime);
 		//view.setCenter(player.GetPosition());
-		
-		window.clear();
 		window.draw(background);
 		window.draw(tile_1);
+		window.clear();
+		
 		//window.setView(view);
 		player.Draw(window);
 		window.display();
