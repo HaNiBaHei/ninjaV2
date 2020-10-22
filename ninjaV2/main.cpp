@@ -20,6 +20,13 @@ int main()
 
 
 	// background //
+	sf::RectangleShape treeforest1;
+	treeforest1.setSize(sf::Vector2f(1080.0f, 720.0f));
+	sf::Texture treeforest1Texture;
+	treeforest1Texture.loadFromFile("Background/treeforest1.png");
+	treeforest1.setTexture(&treeforest1Texture);
+	
+	
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(1080.0f, 720.0f));
 	sf::Texture backgroundTexture;
@@ -68,7 +75,7 @@ int main()
 		//view.setCenter(player.GetPosition());
 		
 		window.clear();
-		
+		window.draw(treeforest1);
 		window.draw(background);
 		window.draw(tile1);
 		//window.setView(view);
