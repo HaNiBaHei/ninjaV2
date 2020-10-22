@@ -43,7 +43,7 @@ int main()
 
 	// player texture //
 	sf::Texture playerTexture;
-	playerTexture.loadFromFile("animation/move.png");
+	//playerTexture.loadFromFile("animation/move.png");
 	
 
 	Player player(&playerTexture, sf::Vector2u(4, 2), 0.15f, 250.f);
