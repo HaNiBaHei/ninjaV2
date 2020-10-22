@@ -20,12 +20,6 @@ int main()
 
 
 	// background //
-	sf::RectangleShape treeforest1;
-	treeforest1.setSize(sf::Vector2f(1080.0f, 720.0f));
-	sf::Texture treeforest1Texture;
-	treeforest1Texture.loadFromFile("Background/treeforest1.png");
-	treeforest1.setTexture(&treeforest1Texture);
-	
 	
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(1080.0f, 720.0f));
@@ -40,7 +34,11 @@ int main()
 	tile1.setTexture(&tile1Texture);
 	//tile1.setPosition(0, 540);
 
-	
+	sf::RectangleShape treeforest1;
+	treeforest1.setSize(sf::Vector2f(1080.0f, 720.0f));
+	sf::Texture treeforest1Texture;
+	treeforest1Texture.loadFromFile("Background/treeforest1.png");
+	treeforest1.setTexture(&treeforest1Texture);
 	
 
 	// player texture //
@@ -75,9 +73,9 @@ int main()
 		//view.setCenter(player.GetPosition());
 		
 		window.clear();
-		window.draw(treeforest1);
 		window.draw(background);
 		window.draw(tile1);
+		window.draw(treeforest1);
 		//window.setView(view);
 		player.Draw(window);
 		window.display();
