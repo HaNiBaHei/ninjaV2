@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Animation.h"
 #include "Player.h"
+#include "Platform.h"
 
 static const float VIEW_HEIGHT = 720.0f;
 static const float VIEW_WIDGHT = 1080.0f;
@@ -18,9 +19,11 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1080, 720), "Bloody Sword", sf::Style::Close | sf::Style::Default); // setting window //
 	//sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT)); // view sprite //
 
+	Platform wall_1(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(400.0f, 400.0f));
+
+
 
 	// background //
-	
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(1080.0f, 720.0f));
 	sf::Texture backgroundTexture;
@@ -71,11 +74,16 @@ int main()
 
 		player.Update(deltaTime);
 		//view.setCenter(player.GetPosition());
-		
+		wall_1.GetCollider().CheckCollistion(player.GetCollider(), 0.0f);
+
+
 		window.clear();
+
+
 		window.draw(background);
 		window.draw(tile1);
 		window.draw(treeforest1);
+		wall_1.Draw(window);
 		//window.setView(view);
 		player.Draw(window);
 		window.display();
